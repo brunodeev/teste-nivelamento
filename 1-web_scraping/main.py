@@ -15,5 +15,6 @@ os.makedirs("downloads", exist_ok=True)
 pdfs = []
 
 for a in soup.find_all("a", href=True):
-    if not "(Anexo I" or "Anexo I" in a.text or "Anexo II"in a.text:
-        print(a.text)
+    text = a.text.strip()
+    if text in ["Anexo I.", "Anexo II."]:
+        print(text)
