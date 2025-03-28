@@ -1,5 +1,4 @@
-import os
-import requests
+import requests, os, zipfile
 from bs4 import BeautifulSoup
 
 headers = {
@@ -28,4 +27,9 @@ for a in soup.find_all("a", href=True):
             f.write(file.content)
         pdfs.append(file_path)
 
-print(pdfs)
+zip_path = os.path.join(base_dir, "anexos.zip")
+with zipfile.ZipFile(zip_path, "w") as zipf:
+    for p in pdfs:
+        zipf.write(p, os.path.basename(p))
+
+print("Arquivo ZIP gerado com sucesso.")
