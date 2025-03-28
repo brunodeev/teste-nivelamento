@@ -11,10 +11,21 @@ url = "https://www.gov.br/ans/pt-br/acesso-a-informacao/participacao-da-sociedad
 response = requests.get(url, headers=headers)
 soup = BeautifulSoup(response.text, 'html.parser')
 
-os.makedirs("downloads", exist_ok=True)
+base_dir = os.path.dirname(os.path.abspath(__file__))
+downloads_folder = os.path.join(base_dir, "downloads")
+os.makedirs(downloads_folder, exist_ok=True)
 pdfs = []
 
 for a in soup.find_all("a", href=True):
     text = a.text.strip()
     if text in ["Anexo I.", "Anexo II."]:
-        print(text)
+        link = a['href']
+        file_name = text.replace(" ", "_").replace(".", "").lower() + ".pdf"
+        file_path = os.path.join(downloads_folder, file_name)
+        print(f"Baixando: {file_name}")
+        file = requests.get(link, headers=headers)
+        with open(file_path, "wb") as f:
+            f.write(file.content)
+        pdfs.append(file_path)
+
+print(pdfs)
