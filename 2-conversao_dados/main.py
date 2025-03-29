@@ -1,3 +1,4 @@
+import tabula
 import requests
 import os
 
@@ -8,3 +9,8 @@ if not os.path.exists(pdf_file):
     r = requests.get(pdf_url)
     with open(pdf_file, "wb") as f:
         f.write(r.content)
+
+tabula.environment_info()
+dfs = tabula.read_pdf(pdf_file, encoding='latin1', pages="all", multiple_tables=True)
+
+print(dfs)
