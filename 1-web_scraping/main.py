@@ -21,7 +21,7 @@ for a in soup.find_all("a", href=True):
         link = a['href']
         file_name = text.replace(" ", "_").replace(".", "").lower() + ".pdf"
         file_path = os.path.join(downloads_folder, file_name)
-        print(f"Baixando: {file_name}")
+        print(f"Baixando {file_name}")
         file = requests.get(link, headers=headers)
         with open(file_path, "wb") as f:
             f.write(file.content)
@@ -31,5 +31,9 @@ zip_path = os.path.join(base_dir, "anexos.zip")
 with zipfile.ZipFile(zip_path, "w") as zipf:
     for p in pdfs:
         zipf.write(p, os.path.basename(p))
+
+os.remove(os.path.join(downloads_folder, "anexo_i.pdf"))
+os.remove(os.path.join(downloads_folder, "anexo_ii.pdf"))
+os.removedirs(downloads_folder)
 
 print("Arquivo ZIP gerado com sucesso.")
