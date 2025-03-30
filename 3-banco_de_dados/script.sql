@@ -7,6 +7,8 @@ CREATE TABLE operadoras_ativas (
     Reg_Ans INT,
     Cd_Conta_Contabil INT,
     Descricao TEXT,
-    VL_Saldo INT,
+    VL_Saldo FLOAT,
     VL_Saldo_Final FLOAT
 );
+
+SELECT * FROM operadoras_ativas;
