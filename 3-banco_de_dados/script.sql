@@ -11,10 +11,21 @@ CREATE TABLE operadoras_ativas (
     VL_Saldo_Final FLOAT
 );
 
-SELECT * FROM operadoras_ativas
-WHERE Descricao LIKE 'OUTROS DÉBITOS DE OPERAÇÕES COM PLANOS DE ASSISTÊNCIA MÉDICO HOSPITALAR'
-OR Descricao LIKE 'Despesas Financeiras com Operações de Assistência Médico-Hospitalar'
-OR Descricao LIKE 'DESPESAS FINANCEIRAS COM OPERAÇÕES DE ASSISTÊNCIA MÉDICO-HOSPITALAR';
+SELECT
+    Reg_Ans,
+    SUM(VL_SALDO_FINAL) AS total_despesas
+FROM 
+    operadoras_ativas
+WHERE 
+    CD_CONTA_CONTABIL LIKE '4421190%'
+    AND DATA >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
+GROUP BY 
+    Reg_Ans
+HAVING 
+    total_despesas < 0
+ORDER BY 
+    total_despesas ASC
+LIMIT 10;
 
 LOAD DATA INFILE '1T2023.csv' INTO TABLE operadoras_ativas
 FIELDS TERMINATED BY ';'
