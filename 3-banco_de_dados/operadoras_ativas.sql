@@ -11,16 +11,36 @@ CREATE TABLE operadoras_ativas (
     VL_Saldo_Final FLOAT
 );
 
+DROP TABLE operadoras_ativas;
+
 SELECT
+	Data,
     Reg_Ans,
     SUM(VL_SALDO_FINAL) AS total_despesas
 FROM 
     operadoras_ativas
 WHERE 
-    CD_CONTA_CONTABIL LIKE '4421190%'
+    Descricao LIKE '%ASSISTÊNCIA A SAÚDE MEDICO HOSPITALAR%'
     AND DATA >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
 GROUP BY 
-    Reg_Ans
+    Data, Reg_Ans
+HAVING 
+    total_despesas < 0
+ORDER BY 
+    total_despesas ASC
+LIMIT 10;
+
+SELECT
+	Data,
+    Reg_Ans,
+    SUM(VL_SALDO_FINAL) AS total_despesas
+FROM 
+    operadoras_ativas
+WHERE 
+    Descricao LIKE '%ASSISTÊNCIA A SAÚDE MEDICO HOSPITALAR%'
+    AND DATA >= DATE_SUB(CURDATE(), INTERVAL 15 MONTH)
+GROUP BY 
+    Data, Reg_Ans
 HAVING 
     total_despesas < 0
 ORDER BY 
