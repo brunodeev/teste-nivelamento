@@ -4,7 +4,10 @@ import pandas as pd
 
 app = FastAPI()
 
-df_operadoras = pd.read_csv("api/Relatorio_cadop.csv", sep=";", encoding="latin1")
+try:
+    df_operadoras = pd.read_csv("api/Relatorio_cadop.csv", sep=";", encoding="utf-8-sig")
+except UnicodeDecodeError:
+    df_operadoras = pd.read_csv("api/Relatorio_cadop.csv", sep=";", encoding="latin1")
 
 df_operadoras["Data_Registro_ANS"] = pd.to_datetime(df_operadoras["Data_Registro_ANS"], errors="coerce")
 
