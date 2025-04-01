@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "1228b4b9-f020-470e-8059-2a43c3e36c8d",
+		"name": "API Cadop",
+		"description": "# 📘 API de Operadoras Relevantes\n\n### Esta API foi desenvolvida em **Python** com **FastAPI** e tem como objetivo listar as operadoras de planos de saúde mais relevantes com base nos dados fornecidos por um arquivo CSV.\n\n---\n\n## 🔗 Endpoint\n\n### `GET /operadoras-relevantes`\n\nRetorna uma lista com as 10 operadoras mais relevantes.\n\n---\n\n## Exemplo de resposta\n\n``` json\n{\n  \"mais_relevantes\": [\n    {\n      \"Registro_ANS\": 422908,\n      \"Razao_Social\": \"3S ADMINISTRADORA DE BENEFÍCIOS LTDA\",\n      \"Nome_Fantasia\": \"3S ADMINISTRADORA DE BENEFICIOS\",\n      \"Modalidade\": \"Administradora de Benefícios\",\n      \"Cidade\": \"Jundiaí\",\n      \"UF\": \"SP\",\n      \"Telefone\": \"42263247\",\n      \"Endereco_eletronico\": \"pietrorocchi37@gmail.com\",\n      \"Data_Registro_ANS\": \"2021-07-12\"\n    }\n  ]\n}\n\n ```\n\n---\n\n## Como rodar\n\n1. Instale as dependências:\n    \n\n``` bash\npip install fastapi uvicorn pandas\n\n ```\n\n1. Coloque o arquivo `Relatorio_cadop.csv` no mesmo diretório do código Python (dentro da pasta /api).\n    \n2. Rode o servidor com o comando:\n    \n\n``` bash\nuvicorn main:app --reload\n\n ```\n\n1. Acesse no postman ou navegador:\n    \n\n- API JSON: \\[[http://localhost:8000/operadoras-relevantes](http://localhost:8000/operadoras-relevantes)\\]\n    \n\n---\n\n## 📝 Autor\n\nDesenvolvido por Bruno Meireles.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "37560221"
+	},
+	"item": [
+		{
+			"name": "Cadastro de Operadoras",
+			"item": [
+				{
+					"name": "Operadoras Relevantes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/operadoras-relevantes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"operadoras-relevantes"
+							],
+							"query": [
+								{
+									"key": "access_key",
+									"value": "{{accessKey}}",
+									"description": "Optional. A collection's read-only access key. Using this query parameter does not require an API key to call the endpoint.",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Gets information about a collection. For a complete list of this endpoint's possible values, use the [collection.json schema file](https://schema.postman.com/json/collection/v2.1.0/collection.json)."
+					},
+					"response": [
+						{
+							"name": "Successful Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{baseUrl}}/operadoras-relevantes"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"mais_relevantes\": [\n    {\n      \"Registro_ANS\": 424391,\n      \"Razao_Social\": \"HOSPITAL DE CLÍNICAS DE PASSO FUNDO\",\n      \"Nome_Fantasia\": \"HC HCPF\",\n      \"Modalidade\": \"Filantropia\",\n      \"Cidade\": \"Passo Fundo\",\n      \"UF\": \"RS\",\n      \"Telefone\": 21033370,\n      \"Endereco_eletronico\": \"ines.xavier@hcpf.com.br\",\n      \"Data_Registro_ANS\": \"2025-03-24\"\n    },\n    {\n      \"Registro_ANS\": 424366,\n      \"Razao_Social\": \"AP ADMINISTRAÇÃO DE BENEFICIOS - SOCIEDADE SIMPLES UNIPESSOAL LIMITADA\",\n      \"Nome_Fantasia\": \"AP ADMINISTRAÇÃO DE BENEFICIOS SOCIEDADE SIMPLES LIMITADA\",\n      \"Modalidade\": \"Administradora de Benefícios\",\n      \"Cidade\": \"São Paulo\",\n      \"UF\": \"SP\",\n      \"Telefone\": 33506000,\n      \"Endereco_eletronico\": \"contato@apbeneficios.com.br\",\n      \"Data_Registro_ANS\": \"2025-03-24\"\n    },\n    {\n      \"Registro_ANS\": 424421,\n      \"Razao_Social\": \"SALVE SAÚDE ADMINISTRADORA DE BENEFÍCIOS LTDA\",\n      \"Nome_Fantasia\": \"SALVE SAÚDE\",\n      \"Modalidade\": \"Administradora de Benefícios\",\n      \"Cidade\": \"Rio de Janeiro\",\n      \"UF\": \"RJ\",\n      \"Telefone\": 22112043,\n      \"Endereco_eletronico\": \"paulo@salvesaude.com.br\",\n      \"Data_Registro_ANS\": \"2025-03-24\"\n    },\n    {\n      \"Registro_ANS\": 424331,\n      \"Razao_Social\": \"MEDICAL LIFE PLANOS DE SAÚDE LTDA\",\n      \"Nome_Fantasia\": \"MEDICAL LIFE PLANOS DE SAUDE\",\n      \"Modalidade\": \"Medicina de Grupo\",\n      \"Cidade\": \"Salvador\",\n      \"UF\": \"BA\",\n      \"Telefone\": 991084561,\n      \"Endereco_eletronico\": \"flaviofreitas83@gmail.com\",\n      \"Data_Registro_ANS\": \"2025-03-17\"\n    },\n    {\n      \"Registro_ANS\": 424323,\n      \"Razao_Social\": \"LAGO SAUDE ADMINISTRADORA DE BENEFICIOS LTDA\",\n      \"Nome_Fantasia\": \"LAGO SAUDE\",\n      \"Modalidade\": \"Administradora de Benefícios\",\n      \"Cidade\": \"Rio de Janeiro\",\n      \"UF\": \"RJ\",\n      \"Telefone\": 999434833,\n      \"Endereco_eletronico\": \"leonardo@unimedicasaude.com\",\n      \"Data_Registro_ANS\": \"2025-03-17\"\n    },\n    {\n      \"Registro_ANS\": 424340,\n      \"Razao_Social\": \"ARTYODONTO BRASIL  PLANO DE ASSISTÊNCIA ODONTOLÓGICA LTDA\",\n      \"Nome_Fantasia\": \"ARTYODONTO BRASIL\",\n      \"Modalidade\": \"Odontologia de Grupo\",\n      \"Cidade\": \"Aracaju\",\n      \"UF\": \"SE\",\n      \"Telefone\": 991300040,\n      \"Endereco_eletronico\": \"artyodontobrasil@artyodontobrasil.com.br\",\n      \"Data_Registro_ANS\": \"2025-02-17\"\n    },\n    {\n      \"Registro_ANS\": 424307,\n      \"Razao_Social\": \"MERIDIAN ADMINISTRADORA DE BENEFÍCIOS S.A\",\n      \"Nome_Fantasia\": \"MERIDIAN ADMINISTRADORA DE BENEFÍCIOS\",\n      \"Modalidade\": \"Administradora de Benefícios\",\n      \"Cidade\": \"Vila Velha\",\n      \"UF\": \"ES\",\n      \"Telefone\": 30224300,\n      \"Endereco_eletronico\": \"meridiansaude@yahoo.com\",\n      \"Data_Registro_ANS\": \"2025-01-27\"\n    },\n    {\n      \"Registro_ANS\": 424242,\n      \"Razao_Social\": \"ABRANGE ADMINISTRADORA DE BENEFICIOS LTDA.\",\n      \"Nome_Fantasia\": \"ABRANGE SAÚDE\",\n      \"Modalidade\": \"Administradora de Benefícios\",\n      \"Cidade\": \"São Paulo\",\n      \"UF\": \"SP\",\n      \"Telefone\": 920554400,\n      \"Endereco_eletronico\": \"dayanasantos@abrangesaude.com.br\",\n      \"Data_Registro_ANS\": \"2025-01-06\"\n    },\n    {\n      \"Registro_ANS\": 424196,\n      \"Razao_Social\": \"MAXIMED PLANOS DE SAUDE LTDA\",\n      \"Nome_Fantasia\": \"MAXIMED SAUDE\",\n      \"Modalidade\": \"Medicina de Grupo\",\n      \"Cidade\": \"Rio de Janeiro\",\n      \"UF\": \"RJ\",\n      \"Telefone\": 39235406,\n      \"Endereco_eletronico\": \"RVIDAS93@GMAIL.COM\",\n      \"Data_Registro_ANS\": \"2024-12-16\"\n    },\n    {\n      \"Registro_ANS\": 424285,\n      \"Razao_Social\": \"AIRES OPERADORA DE SAUDE LTDA\",\n      \"Nome_Fantasia\": \"AIRES OPERADORA DE SAUDE \",\n      \"Modalidade\": \"Medicina de Grupo\",\n      \"Cidade\": \"Olinda\",\n      \"UF\": \"PE\",\n      \"Telefone\": 992463135,\n      \"Endereco_eletronico\": \"jjppcc@gmail.com\",\n      \"Data_Registro_ANS\": \"2024-12-16\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			],
+			"description": "## 📘 Esta coleção contém exemplos de execução do único endpoint dessa API: GET /operadoras-relevantes"
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": {
+			"key": "X-API-Key",
+			"value": "{{token}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:8000"
+		}
+	]
+}
